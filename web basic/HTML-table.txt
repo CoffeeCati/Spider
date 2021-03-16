@@ -1,0 +1,33 @@
+<!-- 表格标记 -->
+
+<table 属性1="属性" 属性2="属性"...>表格内容</table>
+
+table有以下常见属性:
+width: 表格宽度，可以是像素(px)也可以是父级元素的百分比(%)
+height: 表格高度，px/%
+border: 表格外边框宽度
+align: 表示表格的显示位置，left居左，center居中，right居右
+cellspacing: 单元格之间的间距，默认为2px，单位是px
+cellpadding: 单元格内容与单元格边框的显示距离，单位为px
+frame: 控制表格的最外层四个边框。void(默认值)表示无边框；above仅顶部有边框；below仅底部有边框；hsides仅顶部和底部有边框；
+       lhs仅左侧有边框；rhs仅右侧有边框；vsides仅左右侧有边框；border四个边均有边框
+rules: 控制单元格之间的分割线。none(默认值)无分割线；all所有分割线；rows仅行分割线；cols仅列分割线；groups仅在行组和列组之间有分割线
+
+<caption></caption>标记用于在表格中使用标题。用于<table>之后，<tr>之前。align属性值可取：top标题放在表格上部；bottom下部；left左；right右
+
+<tr>表格行</tr>内部可以用<td>或者<th>修饰
+<th>单元格</th> 或者 <td>单元格</td>内容均占一个单元格，但<th>或加粗，一般用于首行或首列
+
+<tr>属性包括:
+bgcolor: 设置该行的背景颜色
+valign: 设置垂直对齐方式。bottom靠顶端对齐；top靠底部对齐；middle居中。
+align: 水平对齐。left靠左对齐；right靠右对齐；center居中
+<th>和<td>有相同属性:
+bgcolor
+align
+valign
+width
+height
+rowspan: 单元格所占行数
+colspan: 单元格所占列数
+
