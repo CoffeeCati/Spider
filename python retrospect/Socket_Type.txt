@@ -1,0 +1,39 @@
+Socket类型
+套接字格式为socket(family, type[,protocal])，使用给定的地址族，套接字类型，协议编号(default = 0)
+
+
+<!-- Socket类型如下(包括地址族和套接字类型) -->
+socket.AF_INET              服务器之间通信
+socket.AF_UNIX              单一Unix系统进程间通信
+socket.SOCK_STREAM          TCP
+socket.SOCK_DGRAM           UDP
+socket.SOCK_RAW             原始套接字，可用于处理带有ICMP、IGMP协议的IPv4报文，可以通过IP_HDRINCL由用户构造IP头
+socket.SOCK_SEQPACKET       可靠的连续数据包服务
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)       创建TCP Socket
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)        创建UDP Socket
+
+
+<!-- Socket函数 -->
+                        <服务器端>
+s.bind(address)             将套接字绑定到地址，在AF_INET下，以元组(host,port)的形式表示地址
+s.listen(backlog)           开始监听TCP传入连接。backlog表示在拒绝连接之前，操作系统可以挂起的最大连接数量，最小为1，一般为5
+s.accept()                  接收TCP连接并返回(conn,address)，conn是新的套接字对象，可用来接收和发送数据，address是连接客户端的地址
+                        <客户端>
+s.connect(address)          连接到address处的套接字。一般address的格式为元组( hostname, port )，如果连接出错返回socket.error错误
+s.connect_ex(address)       与s.connect()相同，但是成功返回0，失败返回socket.error错误
+                        <公共>
+s.recv(bufsize[,flag])      接收TCP套接字的数据，数据以字符串形式返回，bufsize指定要接收的最大数据量。flag通常可以忽略
+s.send(string[,flag])       发送TCP数据。将string中的数据发送到连接的套接字。返回值是要发送的数据量，该数量可能小于string的子节大小
+s.sendall(string[,flag])    完整发送TCP数据，将string中的数据发送到连接的套接字。但在返回之前会尝试发送所有数据，成功返回None否则抛出异常
+s.recvfrom(bufsize[.flag])  接收UDP套接字的数据，与recv()类似，但返回值是(data, address)其中data是包括接收数据的字符串，address是发送数据的套接字地址
+s.sendto(string[,flag], address)    发送UDP数据，address的形式是(ipaddr port)，指定远程地址，返回值是发送字节数
+s.close()                   关闭套接字
+s.getpeername()             返回连接套接字的远程地址(ipaddr, port)
+s.getsockname()             返回套接字自己的地址(ipaddr, port)
+s.setsockopt(level, optname, value)     设置给定套接字选项的值
+s.getsockopt(level, optname[.buflen])   返回套接字选项的值
+s.settimeout(timeout)       设置套接字操作的超时期，timeout是一个浮点数，单位是秒，值为None表示没有超时期，一般在刚创建套接字时设置
+s.setblocking(flag)         如果flag = 0表示套接字为非阻塞模式，recv()没发现数据和send()没发送数据则引起socket.error异常，默认flag = 1
+
+
