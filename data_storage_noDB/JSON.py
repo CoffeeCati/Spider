@@ -28,7 +28,7 @@ r = requests.get(url, headers=headers)
     False时就会报错TypeError，此时设置为True就会跳过这类key
     ensure_ascii: 默认值True。如果dict内有非ASCII字符，则会以"\\uXXXXX"的格式显示数据，设置为False后就能正常显示
     indent: 应该放置一个非负的整型，如果是0或者空，则一行显示数据，否则会换行且按照indent的值显示前边的后空，用于控制格式
-    separators: 分隔符，实际上是(item_separator, dic_separator)元组，默认是(",", ";")表示keys之间使用","分隔，key和value之间用";"分隔
+    separators: 分隔符，实际上是(item_separator, dic_separator)元组，默认是(",", ":")表示keys之间使用","分隔，key和value之间用":"分隔
     sort_keys: 将数据根据keys进行排序
     
     
